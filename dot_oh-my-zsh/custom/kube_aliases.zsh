@@ -41,6 +41,12 @@ alias kgpl='kgp -l'
 # get pod by namespace: kgpn kube-system"
 alias kgpn='kgp -n'
 
+# Metrics observation
+alias ktp='kubectl top pods'
+alias ktpa='kubectl top pods --all-namespaces'
+alias ktpw='ktp --watch'
+alias ktpp='ktp -o wide'
+
 # Service management.
 alias kgs='kubectl get svc'
 alias kgsa='kubectl get svc --all-namespaces'
