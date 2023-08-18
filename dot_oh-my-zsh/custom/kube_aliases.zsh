@@ -111,7 +111,7 @@ alias ksss='kubectl scale statefulset'
 alias krsss='kubectl rollout status statefulset'
 
 # Port forwarding
-alias kpf="kubectl port-forward"
+alias kpf='kubectl port-forward'
 
 # Tools for accessing all information
 alias kga='kubectl get all'
@@ -145,8 +145,8 @@ alias kdpvc='kubectl describe pvc'
 alias kdelpvc='kubectl delete pvc'
 
 # Service account management.
-alias kdsa="kubectl describe sa"
-alias kdelsa="kubectl delete sa"
+alias kdsa='kubectl describe sa'
+alias kdelsa='kubectl delete sa'
 
 # DaemonSet management.
 alias kgds='kubectl get daemonset'
@@ -171,3 +171,9 @@ alias vcl='vcluster list'
 alias vcp='vcluster pause'
 alias vcr='vcluster resume'
 alias vcu='vcluster upgrade'
+
+# Flux shortcuts
+alias f='flux'
+alias frk='flux reconcile kustomization k3s-onprem --with-source'
+alias fu='git add .; git commit --amend --no-edit; git push -f; flux reconcile kustomization k3s-onprem --with-source'
+

@@ -80,10 +80,6 @@ alias td4a="docker run --rm -d -p 5000:5000 --name td4a cidrblock/td4a"
 alias zedit="vim ~/.zshrc"
 alias zsrc="source ~/.zshrc"
 
-# Flux shortcuts
-alias f="flux"
-alias fu="git add .; git commit --amend --no-edit; git push -f; flux reconcile kustomization k3s-onprem --with-source"
-
 # Pet shortcuts
 alias p="pet"
 alias pn="pet new"
