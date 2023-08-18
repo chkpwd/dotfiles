@@ -50,6 +50,6 @@ function bcrypt () {
 }
 
 function hr-reset () {
-  flux -n $2 suspend $1
-  flux -n $2 resume $1
+  flux -n $2 suspend hr $1
+  flux -n $2 resume hr $1
 }
