@@ -48,3 +48,10 @@ function bcrypt () {
   password="$1"
   python -c 'import bcrypt; print(bcrypt.hashpw(b"$password", bcrypt.gensalt(rounds=15)).decode("ascii"))'
 }
+
+function hr-reset () {
+  hr="$1"
+  namespace="$2"
+  flux -n $2 suspend $1
+  flux -n $2 resume $1
+}
