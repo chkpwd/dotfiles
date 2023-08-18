@@ -163,7 +163,8 @@ alias kdelcj='kubectl delete cronjob'
 
 # vCluster management.
 alias vc='vcluster'
-alias vcc='vcluster connect'
+alias vcc='vcluster create'
+alias vcn='vcluster connect'
 alias vcd='vcluster delete'
 alias vcdc='vcluster disconnect'
 alias vcg='vcluster get'
