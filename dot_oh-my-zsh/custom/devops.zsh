@@ -17,6 +17,9 @@ complete -o nospace -C /usr/bin/terraform terraform
 # Autocomplete kubevirt
 . <(kubectl virt completion zsh)
 
+# Autocomplete vcluster
+. <(vcluster completion zsh)
+
 # Start the ssh-agent if not already running
 if ! ssh-add -l >/dev/null; then
     ssh-agent -s > ~/.ssh-agent
