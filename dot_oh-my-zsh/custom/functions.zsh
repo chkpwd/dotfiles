@@ -50,8 +50,6 @@ function bcrypt () {
 }
 
 function hr-reset () {
-  hr="$1"
-  namespace="$2"
   flux -n $2 suspend $1
   flux -n $2 resume $1
 }
