@@ -74,7 +74,7 @@ alias a="ansible -i $HOME/code/iac/ansible/inventory/"
 alias ap="ansible-playbook"
 alias ainv="ansible-inventory"
 alias ac="ansible-console -i $HOME/code/iac/ansible/inventory/"
-alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a"
+alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a:2.0.4"
 
 # Zsh shortcuts
 alias zedit="vim ~/.zshrc"
