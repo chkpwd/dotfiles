@@ -53,3 +53,7 @@ function hr-reset () {
   flux -n $2 suspend hr $1
   flux -n $2 resume hr $1
 }
+
+function pod-logs () {
+  for i in $(kubectl get pods $1 -o json | jq -r '.spec.containers[].name'); do kubectl logs $1 -c $i; done
+}
