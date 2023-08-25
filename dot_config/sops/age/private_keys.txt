@@ -1,0 +1,5 @@
+# public key: age1mt8vvreywnq0972a6y5sxa6klqn8jfezkurkm2trsav42mk56gcqkcu276
+"{{ (bitwardenFields "item" "Age Secret - IaC").pat.value }}"
+
+# public key: age1svjsaslsjmma973szm9x2slcqduz9swzyqtfszg64tsrrs95qsrspynuyw
+"{{ (bitwardenFields "item" "Age Secret - Kubernetes").pat.value }}"
