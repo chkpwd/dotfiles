@@ -1,0 +1,7 @@
+{
+	"auths": {
+		"ghcr.io": {
+			"auth": '{{ (bitwardenFields "item" "GHCR Token").pat.value }}'
+		}
+	}
+}
