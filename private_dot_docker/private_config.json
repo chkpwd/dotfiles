@@ -1,7 +1,7 @@
 {
 	"auths": {
 		"ghcr.io": {
-			"auth": "{{ (bitwardenFields "item" "GHCR Token").notes }}"
+			"auth": {{ (bitwarden "item" "GHCR Token").notes }}
 		}
 	}
 }
