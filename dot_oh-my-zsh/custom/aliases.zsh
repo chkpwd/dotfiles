@@ -147,3 +147,6 @@ alias reload="exec ${SHELL} -l"
 
 # Flush DNS
 alias flushdns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+
+# Run Dev container
+docker run -e BW_EMAIL_ADDRESS=unix.chkpwd@gmail.com -e BW_PASSWORD=$PASSWORD -e CHEZMOI_GIT_USER=chkpwd -it dev:latest
