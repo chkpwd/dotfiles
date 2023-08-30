@@ -19,18 +19,3 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # Autocomplete vcluster
 . <(vcluster completion zsh)
-
-# Start the ssh-agent if not already running
-if ! ssh-add -l >/dev/null; then
-    ssh-agent -s > ~/.ssh-agent
-fi
-
-# Source the ssh-agent pids into the current environment
-if [[ -e ~/.ssh-agent ]]; then
-    source ~/.ssh-agent > /dev/null
-fi
-
-# Add the key(s)
-if [[ -e ~/.ssh ]]; then
-    ssh-add ~/.ssh/main > /dev/null 2>&1
-fi
