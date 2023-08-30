@@ -1,0 +1,14 @@
+[General]
+  snippetfile = "~/.config/pet/snippet.toml"
+  editor = "sensible-editor"
+  column = 40
+  selectcmd = "fzf --ansi"
+  backend = "gist"
+  sortby = ""
+
+[Gist]
+  file_name = "snippet.toml"
+  access_token = {{ (bitwardenFields "item" "Pet Snippet - Gist Creds").access_token.value }}
+  gist_id = {{ (bitwardenFields "item" "Pet Snippet - Gist Creds").gist_id.value }}
+  public = true
+  auto_sync = true
