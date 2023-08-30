@@ -41,7 +41,7 @@ function dbxp () {
 
 function net-utils () {
   local namespace="$1"
-  cat "$2" | sed -e "s/\$NAMESPACE/$namespace/g" | k apply -f -
+  cat "$2" | sed -e "s/\$NAMESPACE/$namespace/g" | kubectl apply -f -
 }
 
 function bcrypt () {
