@@ -1,0 +1,9 @@
+IdentityFile /home/hyoga/.ssh/main
+Host ct-01-x86
+    HostName 129.80.241.202
+    User ubuntu
+    IdentityFile ~/.ssh/oci
+Host ct-02-x86
+    HostName 150.136.245.5
+    User ubuntu
+    IdentityFile ~/.ssh/oci

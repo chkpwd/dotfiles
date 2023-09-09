@@ -1,0 +1,1 @@
+{{ (bitwardenFields "item" "SSH Configs - Main").PrivateKey.value }}
