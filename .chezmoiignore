@@ -1,3 +1,7 @@
 {{- if ne .chezmoi.os "darwin" }}
 Brewfile
+executable_dot_macos
+exact_dot_raycast.scripts
 {{- end }}
+LICENSE 
+README.md
