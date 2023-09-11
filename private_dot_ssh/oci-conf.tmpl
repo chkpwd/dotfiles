@@ -1,6 +1,4 @@
 [DEFAULT]
-user={{ (bitwardenFields "item" "SSH Configs - oci-conf").user.value }}
-fingerprint={{ (bitwardenFields "item" "SSH Configs - oci-conf").fingerprint.value }}
-tenancy={{ (bitwardenFields "item" "SSH Configs - oci-conf").tenancy.value }}
+{{ (bitwardenSecrets "517d3edd-f119-46c6-b592-b07a01565230").value }}
 region=us-ashburn-1
 key_file=./oci.pem
