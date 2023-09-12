@@ -8,7 +8,7 @@
 
 [Gist]
   file_name = "snippet.toml"
-  access_token = "{{ (bitwardenSecrets "b4658182-11f8-45e6-ae8e-b07b003098b2").value }}"
-  gist_id = "{{ (bitwardenSecrets "61ef38b7-28f9-4a33-823b-b07b00300c77").value }}"
+  access_token = "{{ (bitwardenSecrets "b4658182-11f8-45e6-ae8e-b07b003098b2" .accessToken).value }}"
+  gist_id = "{{ (bitwardenSecrets "61ef38b7-28f9-4a33-823b-b07b00300c77" .accessToken).value }}"
   public = false
   auto_sync = true
