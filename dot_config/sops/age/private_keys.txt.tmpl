@@ -1,8 +1,8 @@
 # K3s - public key: age1svjsaslsjmma973szm9x2slcqduz9swzyqtfszg64tsrrs95qsrspynuyw
-{{ (bitwardenSecrets "6fa03e5b-3d2e-443a-896e-b07b0036e515").value }}
+{{ (bitwardenSecrets "6fa03e5b-3d2e-443a-896e-b07b0036e515" .accessToken).value }}
 
 # Terraform - public key: age1mt8vvreywnq0972a6y5sxa6klqn8jfezkurkm2trsav42mk56gcqkcu276
-{{ (bitwardenSecrets "8d34de00-9b97-46b4-a103-b07b00371ce4").value }}
+{{ (bitwardenSecrets "8d34de00-9b97-46b4-a103-b07b00371ce4" .accessToken).value }}
 
 # Ansible - public key: age1px4x0vvgsswsm3r776amtst86yelp7rq48f0k4fmmnnq750ux3ds28cx2h
-{{ (bitwardenSecrets "ecd9b782-7760-439a-8186-b07b003736cf").value }}
+{{ (bitwardenSecrets "ecd9b782-7760-439a-8186-b07b003736cf" .accessToken).value }}
