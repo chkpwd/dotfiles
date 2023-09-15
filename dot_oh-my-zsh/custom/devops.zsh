@@ -19,3 +19,6 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # Autocomplete vcluster
 . <(vcluster completion zsh)
+
+# Autocomplete Atuin
+. <(atuin init zsh)
