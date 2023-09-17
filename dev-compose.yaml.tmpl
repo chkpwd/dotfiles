@@ -15,8 +15,8 @@ services:
     ports:
       - 8687:8687
     volumes:
-{{ if .chezmoi.os "windows" -}}
+{{- if  or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
       - //var/run/docker.sock:/var/run/docker.sock
-{{ else if eq .chezmoi.os "linux" -}}
+{{- else if .chezmoi.os "windows" -}}
       - /var/run/docker.sock:/var/run/docker.sock
-{{ end -}}
+{{- end -}}
