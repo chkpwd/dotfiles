@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  dev-container:
+    image: ghcr.io/chkpwd/dev:latest
+    container_name: dev-container1
+    environment:
+      - BW_EMAIL_ADDRESS=unix.chkpwd@gmail.com
+      - GIT_USER=chkpwd
+      - PULL_REPOS=yes
+    tty: true
+    dns_search: local.chkpwd.com.
+    dns_opt: 
+      - ndots:1
+    ports:
+      - 8687:8687
+    volumes:
+{{ if .chezmoi.os "windows" -}}
+      - //var/run/docker.sock:/var/run/docker.sock
+{{ else if eq .chezmoi.os "linux" -}}
+      - /var/run/docker.sock:/var/run/docker.sock
+{{ end -}}
