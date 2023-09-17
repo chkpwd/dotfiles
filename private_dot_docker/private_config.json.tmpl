@@ -3,5 +3,10 @@
 		"ghcr.io": {
 			"auth": "{{ (bitwardenSecrets "6d49818e-05f5-47a8-a50b-b07b0032f6c0" .accessToken).value }}"
 		}
-	}
+    }
+{{- if eq .chezmoi.os "darwin" }}
+    ,
+    "credsStore": "desktop",
+    "currentContext": "colima"
+{{- end }}
 }
