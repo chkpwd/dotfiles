@@ -55,5 +55,13 @@ function hr-reset () {
 }
 
 function pod-logs () {
-  for i in $(kubectl get pods $1 -o json | jq -r '.spec.containers[].name'); do kubectl logs $1 -c $i; done
+  local namespace=""
+  if [ ! -z "$2" ]; then
+    namespace="-n $2"
+  fi
+
+  for i in $(kubectl get pods $namespace $1 -o json | jq -r '.spec.containers[].name'); do
+    kubectl logs $namespace $1 -c $i
+  done
 }
+
