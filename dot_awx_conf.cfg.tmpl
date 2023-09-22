@@ -1,0 +1,4 @@
+[general]
+host = https://awx.local.chkpwd.com
+verify_ssl = true
+oauth_token = {{ (bitwardenSecrets "d8dd5226-ce9d-4304-bdd4-b08500d6c619" .accessToken).value }}
