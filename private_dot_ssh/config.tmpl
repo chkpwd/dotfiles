@@ -3,11 +3,7 @@ Include /Users/{{ .chezmoi.username }}/.colima/ssh_config
 {{ end -}}
 
 Host *
-{{ if eq .chezmoi.os "linux" -}}
-     IdentityFile /home/{{ .chezmoi.username }}/.ssh/main
-{{ else if eq .chezmoi.os "windows" -}}
      IdentityFile ~/.ssh/main
-{{ end -}}
      User hyoga
 
 Host ct-01-x86
