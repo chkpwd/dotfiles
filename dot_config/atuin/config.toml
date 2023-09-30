@@ -1,0 +1,68 @@
+# Encryption Key Path
+key_path = "~/.config/atuin/.key"
+
+# Session Data Path
+session_path = "~/.config/atuin/.session"
+
+# date format used, either "us" or "uk"
+dialect = "us"
+
+# enable or disable automatic sync
+auto_sync = true
+
+# enable or disable automatic update checks
+update_check = true
+
+# Sync Interval
+sync_frequency = "1h"
+
+# Search Mode
+search_mode = "fuzzy"
+
+# which style to use
+# possible values: auto, full, compact
+style = "auto"
+
+# the maximum number of lines the interface should take up
+# set it to 0 to always go full screen
+inline_height = 0
+
+# enable or disable showing a preview of the selected command
+# useful when the command is longer than the terminal width and is cut off
+show_preview = false
+
+# what to do when the escape key is pressed when searching
+# possible values: return-original, return-query
+exit_mode = "return-original"
+
+# possible values: emacs, subl
+# word_jump_mode = "emacs"
+
+# characters that count as a part of a word
+# word_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+
+# number of context lines to show when scrolling by pages
+# scroll_context_lines = 1
+
+# use ctrl instead of alt as the shortcut modifier key for numerical UI shortcuts
+# alt-0 .. alt-9
+# ctrl_n_shortcuts = false
+
+# prevent commands matching any of these regexes from being written to history.
+# Note that these regular expressions are unanchored, i.e. if they don't start
+# with ^ or end with $, they'll match anywhere in the command.
+# For details on the supported regular expression syntax, see
+# https://docs.rs/regex/latest/regex/#syntax
+history_filter = [
+  "^bw .*--apiKey=",
+  "^bws .*--accessToken=.+"
+]
+
+# prevent commands run with cwd matching any of these regexes from being written
+# to history. Note that these regular expressions are unanchored, i.e. if they don't
+# start with ^ or end with $, they'll match anywhere in CWD.
+# For details on the supported regular expression syntax, see
+# https://docs.rs/regex/latest/regex/#syntax
+# cwd_filter = [
+#   "^/very/secret/area"
+# ]
