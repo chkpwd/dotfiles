@@ -32,7 +32,7 @@ repositories:
   certFile: ""
   insecure_skip_tls_verify: false
   keyFile: ""
-  name: bjw-s-charts
+  name: bjw-s
   pass_credentials_all: false
   password: ""
   url: https://bjw-s.github.io/helm-charts/
