@@ -149,4 +149,7 @@ alias reload="exec ${SHELL} -l"
 alias flushdns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
 # Run Dev container
-docker run -e BW_EMAIL_ADDRESS=unix.chkpwd@gmail.com -e BW_PASSWORD=$PASSWORD -e CHEZMOI_GIT_USER=chkpwd -it dev:latest
+alias dev-container="docker run -e BW_EMAIL_ADDRESS=unix.chkpwd@gmail.com -e BW_PASSWORD=$PASSWORD -e CHEZMOI_GIT_USER=chkpwd -it dev:latest"
+
+# Run Kairosctl
+alias kairosctl="docker run -rm ghcr.io/tyzbit/kairosctl:v2.3.1"
