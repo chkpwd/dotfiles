@@ -2,8 +2,5 @@
 Brewfile
 .macos
 {{- end }}
-{{- if and (or (not (eq .chezmoi.os "darwin")) (not (eq .chezmoi.os "linux"))) }}
-.awx_conf.cfg
-{{- end }}
 LICENSE 
 README.md
