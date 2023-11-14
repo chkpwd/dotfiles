@@ -17,6 +17,6 @@ services:
     volumes:
 {{- if  or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") }}
       - /var/run/docker.sock:/var/run/docker.sock
-{{- else if .chezmoi.os "windows" }}
+{{- else if eq .chezmoi.os "window" }}
       - //var/run/docker.sock:/var/run/docker.sock
 {{- end }}
