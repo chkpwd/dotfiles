@@ -90,6 +90,7 @@ brew "zsh-autosuggestions"
 brew "carlocab/personal/unrar"
 brew "fluxcd/tap/flux"
 brew "podman"
+brew "mas"
 cask "discord-canary"
 cask "gimp"
 cask "iterm2"
@@ -98,7 +99,9 @@ cask "slack"
 cask "spotify"
 cask "vlc"
 cask "yubico-yubikey-manager"
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Xcode", id: 497799835
+mas "Twingate", id: 1501686317
+mas "Bitwarden", id: 1352778147
+mas "VMware Remote Console", id: 1230249825
+mas "Wireguard", id: 1451685025
+mas "Microsoft Remote Desktop", id: 1295203466
