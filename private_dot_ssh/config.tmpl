@@ -4,14 +4,19 @@ Include /Users/{{ .chezmoi.username }}/.colima/ssh_config
 
 Host *
      IdentityFile ~/.ssh/main
-     User hyoga
+     User chkpwd
 
-Host ct-01-x86
-     HostName 129.80.241.202
+Host ct-01-ec2
+     HostName 54.145.97.133
+     User admin
+     IdentityFile ~/.ssh/aws
+
+Host ct-01-oci
+     HostName 129.80.54.203
      User ubuntu
      IdentityFile ~/.ssh/oci
 
-Host ct-02-x86
-     HostName 150.136.245.5
+Host ct-02-oci
+     HostName 141.148.13.11
      User ubuntu
      IdentityFile ~/.ssh/oci
