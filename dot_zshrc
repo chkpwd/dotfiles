@@ -10,8 +10,6 @@ HISTFILE=~/.zsh_history
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-#!/usr/bin/env zsh
-
 ###-- Sources --###
 source ~/.zshrc-files/aliases.zsh
 source ~/.zshrc-files/kube_aliases.zsh
@@ -20,7 +18,6 @@ source ~/.antigen.zsh
 antigen init ~/.antigenrc
 
 ###-- Paths --###
-# Add $HOME/.local/bin to path
 export PATH=/usr/local/go/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
