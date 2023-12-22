@@ -11,6 +11,9 @@ literal_run_one_after_00_init.sh.tmpl.literal
 .bash_history
 .vimrc
 .terraform.d
+.config/atuin
+.config/helm
+.config/tmux
 {{- end }}
 {{- if ne .chezmoi.os "windows" }}
 vencord-settings-backup.json
