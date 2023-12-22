@@ -3,6 +3,7 @@ Brewfile
 .macos
 {{- end }}
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
+.zsh-files
 .awx_conf.cfg
 .bash_history
 .vimrc
