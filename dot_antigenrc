@@ -17,7 +17,6 @@ antigen bundle command-not-found
 antigen bundle colorize
 antigen bundle magic-enter
 antigen bundle safe-paste
-antigen bundle thefuck
 antigen bundle dirhistory
 
 # Additional bundles
