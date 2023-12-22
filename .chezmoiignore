@@ -6,11 +6,10 @@ literal_run_one_after_00_init.sh.tmpl.literal
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
 **/*.zsh*
 .antigen*
-.zsh-files
+.zsh_files
 .awx_conf.cfg
 .bash_history
 .vimrc
-.terraform.d
 .config/atuin
 .config/helm
 .config/tmux

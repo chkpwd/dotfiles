@@ -11,9 +11,9 @@ HISTFILE=~/.zsh_history
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 ###-- Sources --###
-source ~/.zsh-files/aliases.zsh
-source ~/.zsh-files/kube_aliases.zsh
-source ~/.zsh-files/functions.zsh
+source ~/.zsh_files/aliases.zsh
+source ~/.zsh_files/kube_aliases.zsh
+source ~/.zsh_files/functions.zsh
 source ~/.antigen.zsh
 antigen init ~/.antigenrc
 
