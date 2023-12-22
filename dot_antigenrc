@@ -10,9 +10,7 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
-antigen bundle heroku
 antigen bundle pip
-antigen bundle lein
 antigen bundle command-not-found
 antigen bundle colorize
 antigen bundle magic-enter
@@ -26,7 +24,6 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle b4b4r07/enhancd
 antigen bundle supercrabtree/k
-antigen bundle esc/conda-zsh-completion
 
 # Load the theme.
 antigen theme romkatv/powerlevel10k
