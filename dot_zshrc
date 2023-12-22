@@ -18,7 +18,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source ~/.zshrc-files/aliases.zsh
 source ~/.zshrc-files/kube_aliases.zsh
 source ~/.zshrc-files/functions.zsh
-source ~/antigen.zsh
+source ~/.antigen.zsh
 antigen init ~/.antigenrc
 
 ###-- Paths --###

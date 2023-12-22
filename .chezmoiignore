@@ -9,6 +9,7 @@ Brewfile
 {{- end }}
 {{- if ne .chezmoi.os "windows" }}
 vencord-settings-backup.json
+dev-compose.yaml
 {{- end }}
 LICENSE 
 README.md
