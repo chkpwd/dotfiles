@@ -1,3 +1,24 @@
+#!/usr/bin/env zsh
+
+# transfer.sh alias
+transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
+
+# Enter a running Docker container
+function denter() {
+    if [[ ! "$1" ]] ; then
+        echo "You must supply a container ID or name."
+        return 0
+    fi
+
+    docker exec -it $1 bash
+    return 0
+}
+
+# Password generation
+pwgen() {
+    LC_ALL=C tr -dc 'A-Za-z0-9' </dev/urandom | head -c 32 ; echo;
+}
+
 function runjob() {
   temp_job_name=$1-$(date +%s)
   kubectl create job --from=cronjobs/$1 $temp_job_name -n $2 &&
@@ -10,10 +31,6 @@ function killport() {
   echo "killed port ${1}"
 }
 
-function deploydelete() {
-  kubectl delete deployment -n apps $1
-}
-
 function prev() {
   PREV=$(fc -lrn | head -n 1)
   sh -c "pet new `printf %q "$PREV"`"
@@ -24,19 +41,6 @@ function cypher {
     extension="${filename##*.}"
     filename="${filename%.*}"
     sops --encrypt --age $(cat ~/.config/sops/age/keys.txt |grep -oP "public key: \K(.*)") $2 $3 $1 > "$filename.sops.$extension"
-}
-
-function k3s-destroy () {
-  for i in 0 1 3; do terraform destroy -target="module.kube-ops[$i].vsphere_virtual_machine.lin    ux[0]" -lock=false; done
-}
-
-function dbxp () {
-  image_version=$1
-  push=$2
-  export image_version
-  export push
-  docker buildx prune
-  registry=chkpwd TAG=1.20 ./build.sh
 }
 
 function net-utils () {

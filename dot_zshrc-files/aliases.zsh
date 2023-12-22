@@ -74,7 +74,6 @@ alias a="ansible -i $HOME/code/iac/ansible/inventory/"
 alias ap="ansible-playbook"
 alias ainv="ansible-inventory"
 alias ac="ansible-console -i $HOME/code/iac/ansible/inventory/"
-alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a:2.0.4"
 
 # Zsh shortcuts
 alias zedit="vim ~/.zshrc"
@@ -148,8 +147,10 @@ alias reload="exec ${SHELL} -l"
 # Flush DNS
 alias flushdns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
-# Run Dev container
-alias dev-container="docker run -e BW_EMAIL_ADDRESS=unix.chkpwd@gmail.com -e BW_PASSWORD=$PASSWORD -e CHEZMOI_GIT_USER=chkpwd -it dev:latest"
-
-# Run Kairosctl
+{{ if  regexMatch "WSL" .chezmoi.kernel.osrelease }}
+alias kairosctl="sudo docker run -rm ghcr.io/tyzbit/kairosctl:v2.3.1"
+alias td4a="sudo docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a:2.0.4"
+{{ else }}
+alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a:2.0.4"
 alias kairosctl="docker run -rm ghcr.io/tyzbit/kairosctl:v2.3.1"
+{{ end }}

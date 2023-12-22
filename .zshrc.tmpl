@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+###-- Sources --###
+source ~/.zshrc-files/aliases.zsh
+source ~/.zshrc-files/kube_aliases.zsh
+source ~/.zshrc-files/functions.zsh
+
+###-- Paths --###
+# Add $HOME/.local/bin to path
+export PATH=/usr/local/go/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+###-- Autocompletes --###
+
+# Hook extension for direnv to hook properly in zsh
+eval "$(direnv hook zsh)"
+
+# Terraform
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+
+# Flux
+. <(flux completion zsh)
+
+# Helm
+. <(helm completion zsh)
+
+# kubetctl
+. <(kubectl completion zsh)
+
+# vcluster
+. <(vcluster completion zsh)
+
+# Atuin
+. <(atuin init zsh)

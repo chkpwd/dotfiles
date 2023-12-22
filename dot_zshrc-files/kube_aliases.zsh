@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# This command is used a LOT both below and in daily life
+# Shorter kubectl
 alias k=kubectl
 
 # Execute a kubectl command against all namespaces
@@ -177,4 +177,3 @@ alias vcu='vcluster upgrade'
 alias f='flux'
 alias frk='flux reconcile kustomization k3s-onprem --with-source'
 alias fu='git add .; git commit --amend --no-edit; git push -f; flux reconcile kustomization k3s-onprem --with-source'
-

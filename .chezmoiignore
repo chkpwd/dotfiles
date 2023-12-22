@@ -2,5 +2,13 @@
 Brewfile
 .macos
 {{- end }}
+{{- if or (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
+.awx_conf.cfg
+.bash_history
+.vimrc
+{{- end }}
+{{- if ne .chezmoi.os "windows" }}
+vencord-settings-backup.json
+{{- end }}
 LICENSE 
 README.md
