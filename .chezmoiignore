@@ -4,10 +4,13 @@ literal_run_one_after_00_init.sh.tmpl.literal
 .macos
 {{- end }}
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
+**/.zsh
+.antigen*
 .zsh-files
 .awx_conf.cfg
 .bash_history
 .vimrc
+.terraform.d
 {{- end }}
 {{- if ne .chezmoi.os "windows" }}
 vencord-settings-backup.json
