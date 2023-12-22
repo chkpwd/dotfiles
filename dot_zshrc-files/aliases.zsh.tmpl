@@ -149,9 +149,9 @@ alias flushdns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
 # Docker Run
 {{- if and (ne .chezmoi.os "darwin") (regexMatch "WSL" .chezmoi.kernel.osrelease) }}
-alias kairosctl="sudo docker run -rm ghcr.io/tyzbit/kairosctl:v2.3.1"
-alias td4a="sudo docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a:2.0.4"
+alias kairosctl="sudo docker run --rm ghcr.io/tyzbit/kairosctl:v2.3.1"
+alias td4a="sudo docker run --rm -d -p 5000:5000 --name td4a ghcr.io/tigattack/td4a:2.0.6"
 {{- else }}
-alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a:2.0.4"
-alias kairosctl="docker run -rm ghcr.io/tyzbit/kairosctl:v2.3.1"
+alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghcr.io/tigattack/td4a:2.0.6"
+alias kairosctl="docker run --rm ghcr.io/tyzbit/kairosctl:v2.3.1"
 {{- end }}
