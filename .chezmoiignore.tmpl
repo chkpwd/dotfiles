@@ -1,9 +1,9 @@
-{{- if ne .chezmoi.os "darwin" }}
+{{ if ne .chezmoi.os "darwin" }}
 Brewfile
 literal_run_one_after_00_init.sh.tmpl.literal
 .macos
-{{- end }}
-{{- if or ( eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") }}
+{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
 **/*.zsh*
 .antigen*
 .zsh_files/**
@@ -14,10 +14,10 @@ literal_run_one_after_00_init.sh.tmpl.literal
 .config/atuin/**
 .config/helm/**
 .config/tmux/**
-{{- end }}
-{{- if ne .chezmoi.os "windows" }}
+{{ end }}
+{{ if ne .chezmoi.os "windows" }}
 vencord-settings-backup.json
 dev-compose.yaml
-{{- end }}
+{{ end }}
 LICENSE 
 README.md
