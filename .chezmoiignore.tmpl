@@ -4,7 +4,7 @@ literal_run_one_after_00_init.sh.tmpl.literal
 .macos
 {{- end }}
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
-**/*.zsh*
+*/*.zsh*
 .antigen*
 .zsh_files/**
 .awx_conf.cfg
