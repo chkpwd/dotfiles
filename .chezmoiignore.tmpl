@@ -3,7 +3,7 @@ Brewfile
 literal_run_one_after_00_init.sh.tmpl.literal
 .macos
 {{- end }}
-{{- if or (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
+{{- if or ( eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") }}
 **/*.zsh*
 .antigen*
 .zsh_files/**
