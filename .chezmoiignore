@@ -1,5 +1,6 @@
 {{- if ne .chezmoi.os "darwin" }}
 Brewfile
+literal_run_one_after_00_init.sh.tmpl.literal
 .macos
 {{- end }}
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
