@@ -147,10 +147,11 @@ alias reload="exec ${SHELL} -l"
 # Flush DNS
 alias flushdns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
-{{ if  regexMatch "WSL" .chezmoi.kernel.osrelease }}
+# Docker Run
+{{- if  regexMatch "WSL" .chezmoi.kernel.osrelease }}
 alias kairosctl="sudo docker run -rm ghcr.io/tyzbit/kairosctl:v2.3.1"
 alias td4a="sudo docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a:2.0.4"
-{{ else }}
+{{- else }}
 alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghrc.io/tigattack/td4a:2.0.4"
 alias kairosctl="docker run -rm ghcr.io/tyzbit/kairosctl:v2.3.1"
-{{ end }}
+{{- end }}
