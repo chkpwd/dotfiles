@@ -54,8 +54,8 @@ function bcrypt () {
 }
 
 function hr-reset () {
-  flux -n $2 suspend hr $1
-  flux -n $2 resume hr $1
+  flux -n $1 suspend hr $2
+  flux -n $1 resume hr $2
 }
 
 function pod-logs () {
