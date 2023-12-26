@@ -19,6 +19,7 @@ antigen init ~/.antigenrc
 
 # Direnv
 export DIRENV_LOG_FORMAT=
+eval "$(direnv hook zsh)" # Hook into shell
 
 ###-- Paths --###
 export PATH=/usr/local/go/bin:$PATH
@@ -26,11 +27,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 ###-- Autocompletes --###
 
-# Hook extension for direnv to hook properly in zsh
-eval "$(direnv hook zsh)"
-
 # Completion System
-autoload -Uz compinit
+autoload -Uz compinit && compinit
 
 # Terraform
 complete -o nospace -C /usr/bin/terraform terraform
