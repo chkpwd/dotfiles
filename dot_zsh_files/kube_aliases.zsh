@@ -4,7 +4,12 @@
 alias k=kubectl
 
 # Execute a kubectl command against all namespaces
-# alias kca='_kca(){ kubectl "$@" --all-namespaces;  unset -f _kca; }; _kca'
+alias kca='_kca(){ kubectl "$@" --all-namespaces;  unset -f _kca; }; _kca'
+
+# Get Events
+alias kge='kubectl get events'
+alias kgea='kubectl get events --all-namespaces'
+alias kgew='kubectl get events --watch'
 
 # Apply a YML file
 alias kaf='kubectl apply -f'
