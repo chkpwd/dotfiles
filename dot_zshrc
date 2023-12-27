@@ -24,6 +24,7 @@ eval "$(direnv hook zsh)" # Hook into shell
 ###-- Paths --###
 export PATH=/usr/local/go/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH=~/.venv/bin:$PATH
 
 ###-- Autocompletes --###
 
