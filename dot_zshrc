@@ -26,8 +26,10 @@ export PATH=/usr/local/go/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=~/.venv/bin:$PATH
 
-###-- Autocompletes --###
+###-- Settings --###
+export KUBE_EDITOR='code --wait'
 
+###-- Autocompletes --###
 # Completion System
 autoload -Uz compinit && compinit
 
