@@ -50,21 +50,10 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 alias ns="nslookup"
 
 # Docker shortcuts
-{{- if and (ne .chezmoi.os "darwin") (regexMatch "WSL" .chezmoi.kernel.osrelease) }}
+{{- if regexMatch "WSL" .chezmoi.kernel.osrelease }}
+alias docker="sudo docker"
+{{- end }}
 
-# Set prefix function
-function escalate { sudo $*; }
-
-alias dc="escalate docker compose"
-alias dup="escalate docker compose up -d"
-alias ddo="escalate docker-compose down"
-alias dps="escalate docker ps"
-alias dkac="escalate docker kill \$(docker ps -q)"
-alias drmc="escalate docker rm \$(docker ps -a -q)"
-alias drmi="escalate docker rmi \$(docker images -q -f dangling=true)"
-alias kairosctl="escalate docker run --rm ghcr.io/tyzbit/kairosctl:v2.3.1"
-alias td4a="escalate docker run --rm -d -p 5000:5000 --name td4a ghcr.io/tigattack/td4a:2.0.6"
-{{- else }}
 alias dc="docker compose"
 alias dup="docker compose up -d"
 alias ddo="docker-compose down"
@@ -74,7 +63,6 @@ alias drmc="docker rm \$(docker ps -a -q)"
 alias drmi="docker rmi \$(docker images -q -f dangling=true)"
 alias kairosctl="docker run --rm ghcr.io/tyzbit/kairosctl:v2.3.1"
 alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghcr.io/tigattack/td4a:2.0.6"
-{{- end }}
 
 # Terraform shortcuts
 alias tf="terraform"
