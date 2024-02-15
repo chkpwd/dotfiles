@@ -1,0 +1,1 @@
+{{ (bitwardenSecrets "256c41e3-6874-4694-a96f-b11700de83b0" .accessToken).value }}

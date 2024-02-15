@@ -14,7 +14,6 @@ antigen bundle pip
 antigen bundle command-not-found
 antigen bundle colorize
 antigen bundle magic-enter
-antigen bundle safe-paste
 antigen bundle dirhistory
 
 # Additional bundles
@@ -23,7 +22,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle ael-code/zsh-colored-man-pages
-antigen bundle b4b4r07/enhancd
 
 # Load the theme.
 antigen theme romkatv/powerlevel10k
