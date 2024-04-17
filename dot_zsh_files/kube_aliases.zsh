@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Kubecolor
+alias kubectl=kubecolor
+
 # Shorter kubectl
 alias k=kubectl
 
