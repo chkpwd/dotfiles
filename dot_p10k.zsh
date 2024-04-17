@@ -66,8 +66,14 @@
     # virtualenv              # python virtual environment
     # context                 # user@host
     time                      # current time
+    direnv                    # direnv status
+    virtualenv                # python virtual environment
+    kubecontext               # current kubernetes context
+    terraform                 # terraform workspace
+    nix_shell                 # nix shell
     # =========================[ Line #2 ]=========================
     newline                   # \n
+    todo                      # todo items
   )
 
   # Basic style options that define the overall prompt look.
@@ -76,11 +82,6 @@
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=' '  # separate segments with a space
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=        # no end-of-line symbol
   typeset -g POWERLEVEL9K_VISUAL_IDENTIFIER_EXPANSION=           # no segment icons
-
-  #############[ kubecontext: current kubernetes context (https://kubernetes.io/) ]#############
-  # Show kubecontext only when the command you are typing invokes one of these tools.
-  # Tip: Remove the next line to always show kubecontext.
-  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|kubecolor|helm|kubens|kubectx|k9s|helmfile|flux|fluxctl|stern|cmctl'
 
   # Add an empty line before each prompt except the first. This doesn't emulate the bug
   # in Pure that makes prompt drift down whenever you use the Alt-C binding from fzf or similar.
@@ -164,6 +165,55 @@
   # commands will contain the start times of their commands rather than the end times of
   # their preceding commands.
   typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
+
+  ################[ todo: todo items (https://github.com/todotxt/todo.txt-cli) ]################
+  # Todo color.
+  typeset -g POWERLEVEL9K_TODO_FOREGROUND=0
+  typeset -g POWERLEVEL9K_TODO_BACKGROUND=8
+  # Hide todo when the total number of tasks is zero.
+  typeset -g POWERLEVEL9K_TODO_HIDE_ZERO_TOTAL=true
+  # Hide todo when the number of tasks after filtering is zero.
+  typeset -g POWERLEVEL9K_TODO_HIDE_ZERO_FILTERED=false
+
+  #######################[ direnv: direnv status (https://direnv.net/) ]########################
+  # Direnv color.
+  typeset -g POWERLEVEL9K_DIRENV_FOREGROUND=3
+  typeset -g POWERLEVEL9K_DIRENV_BACKGROUND=0
+
+  #[ nix_shell: nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html) ]##
+  # Nix shell color.
+  typeset -g POWERLEVEL9K_NIX_SHELL_FOREGROUND=0
+  typeset -g POWERLEVEL9K_NIX_SHELL_BACKGROUND=4
+
+  ################[ terraform: terraform workspace (https://www.terraform.io) ]#################
+  # Don't show terraform workspace if it's literally "default".
+  typeset -g POWERLEVEL9K_TERRAFORM_SHOW_DEFAULT=false
+  typeset -g POWERLEVEL9K_TERRAFORM_CLASSES=(
+      '*'         OTHER)
+  typeset -g POWERLEVEL9K_TERRAFORM_OTHER_FOREGROUND=4
+  typeset -g POWERLEVEL9K_TERRAFORM_OTHER_BACKGROUND=0
+
+  #############[ terraform_version: terraform version (https://www.terraform.io) ]##############
+  # Terraform version color.
+  typeset -g POWERLEVEL9K_TERRAFORM_VERSION_FOREGROUND=4
+  typeset -g POWERLEVEL9K_TERRAFORM_VERSION_BACKGROUND=0
+
+  ################[ terraform_version: It shows active terraform version (https://www.terraform.io) ]#################
+  typeset -g POWERLEVEL9K_TERRAFORM_VERSION_SHOW_ON_COMMAND='terraform|tf'
+
+  #############[ kubecontext: current kubernetes context (https://kubernetes.io/) ]#############
+  # Show kubecontext only when the command you are typing invokes one of these tools.
+  # Tip: Remove the next line to always show kubecontext.
+  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|kubecolor|helm|kubens|kubectx|k9s|helmfile|flux|fluxctl|stern|cmctl'
+ 
+  # Kubernetes context classes for the purpose of using different colors, icons and expansions with
+  # different contexts.
+  typeset -g POWERLEVEL9K_KUBECONTEXT_CLASSES=(
+      # '*prod*'  PROD    # These values are examples that are unlikely
+      # '*test*'  TEST    # to match your needs. Customize them as needed.
+      '*'       DEFAULT)
+  typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_FOREGROUND=7
+  typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_BACKGROUND=5
 
   # Transient prompt works similarly to the builtin transient_rprompt option. It trims down prompt
   # when accepting a command line. Supported values:
