@@ -47,9 +47,6 @@ complete -o nospace -C /usr/bin/terraform terraform
 # vcluster
 . <(vcluster completion zsh)
 
-# cmctl
-. <(cmctl completion zsh)
-
 # Atuin
 . <(atuin init zsh)
 

@@ -66,13 +66,13 @@
     # virtualenv              # python virtual environment
     # context                 # user@host
     time                      # current time
+    # =========================[ Line #2 ]=========================
+    newline                   # \n
     direnv                    # direnv status
     virtualenv                # python virtual environment
     kubecontext               # current kubernetes context
     terraform                 # terraform workspace
     nix_shell                 # nix shell
-    # =========================[ Line #2 ]=========================
-    newline                   # \n
     todo                      # todo items
   )
 
