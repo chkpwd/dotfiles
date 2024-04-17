@@ -77,6 +77,11 @@
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=        # no end-of-line symbol
   typeset -g POWERLEVEL9K_VISUAL_IDENTIFIER_EXPANSION=           # no segment icons
 
+  #############[ kubecontext: current kubernetes context (https://kubernetes.io/) ]#############
+  # Show kubecontext only when the command you are typing invokes one of these tools.
+  # Tip: Remove the next line to always show kubecontext.
+  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|kubecolor|helm|kubens|kubectx|k9s|helmfile|flux|fluxctl|stern|cmctl'
+
   # Add an empty line before each prompt except the first. This doesn't emulate the bug
   # in Pure that makes prompt drift down whenever you use the Alt-C binding from fzf or similar.
   typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=false

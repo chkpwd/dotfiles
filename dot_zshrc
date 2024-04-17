@@ -22,12 +22,11 @@ export DIRENV_LOG_FORMAT=
 eval "$(direnv hook zsh)" # Hook into shell
 
 ###-- Paths --###
-export PATH=/usr/local/go/bin:$PATH
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=~/.venv/bin:$PATH
 
 ###-- Settings --###
 export KUBE_EDITOR='code --wait'
+export EDITOR='vim'
 
 ###-- Autocompletes --###
 # Completion System

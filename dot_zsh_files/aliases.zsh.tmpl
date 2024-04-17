@@ -50,10 +50,6 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 alias ns="nslookup"
 
 # Docker shortcuts
-{{- if regexMatch "WSL" .chezmoi.kernel.osrelease }}
-alias docker="sudo docker"
-{{- end }}
-
 alias dc="docker compose"
 alias dup="docker compose up -d"
 alias ddo="docker-compose down"
