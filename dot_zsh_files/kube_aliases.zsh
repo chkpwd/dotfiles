@@ -1,10 +1,7 @@
 #!/usr/bin/env zsh
 
 # Kubecolor
-alias kubectl=kubecolor
-
-# Shorter kubectl
-alias k=kubectl
+alias k=kubecolor
 
 # Execute a kubectl command against all namespaces
 alias kca='_kca(){ kubectl "$@" --all-namespaces;  unset -f _kca; }; _kca'
