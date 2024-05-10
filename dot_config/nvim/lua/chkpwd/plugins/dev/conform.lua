@@ -15,7 +15,9 @@ return {
         python = { "isort", "black" },
         nix = { "alejandra" },
         terraform = { "terraform_fmt" },
-        --ansible = { "ansible" }
+        ansible = { "ansible" },
+        packer = { "packer_fmt" },
+        bash = { "shfmt", "shellcheck" }
       },
       format_on_save = {
         lsp_fallback = true,

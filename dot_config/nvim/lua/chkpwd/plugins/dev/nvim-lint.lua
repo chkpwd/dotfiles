@@ -6,6 +6,12 @@ return {
 
     lint.linters_by_ft = {
       python = { "pylint" },
+      ansible = { "ansible_lint" },
+      actions = { "actionlint" },
+      nix = { "nix" },
+      bash = { "shellcheck" },
+      yaml = { "yamllint" },
+      json = { "jsonlint" }
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
