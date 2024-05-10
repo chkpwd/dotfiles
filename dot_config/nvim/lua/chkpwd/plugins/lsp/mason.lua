@@ -29,6 +29,11 @@ return {
       ensure_installed = {
         "lua_ls",
         "pyright",
+        "html",
+        "cssls",
+        "helm_ls",
+        "terraformls",
+        "ansiblels",
       },
     })
 
@@ -39,12 +44,12 @@ return {
         "isort",
         "black",
         "pylint",
-        "eslint_d",
         "yamllint",
         "yamlfmt",
         "hclfmt",
         "helm-ls",
         "ansible-lint",
+        "nixpkgs-fmt"
       },
     })
   end,
