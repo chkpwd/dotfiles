@@ -3,7 +3,6 @@ local list = "chkpwd.plugins.ide."
 return {
   require(list .. "nvim-tree"),
   require(list .. "auto-session"),
-  require(list .. "bufferline"),
   require(list .. "lualine"),
   require(list .. "nvim-tree"),
   require(list .. "telescope"),
