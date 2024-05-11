@@ -1,4 +1,4 @@
-vim.cmd("let G:netrw_liststyle = 3")
+vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
 
