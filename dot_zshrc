@@ -43,6 +43,7 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # kubetctl
 . <(kubectl completion zsh)
+compdef kubecolor=kubectl
 
 # vcluster
 . <(vcluster completion zsh)
