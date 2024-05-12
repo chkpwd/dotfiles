@@ -2,15 +2,17 @@ return {
   {
     "akinsho/toggleterm.nvim",
     opts = {
-      open_mapping = [[<C-\>]],
+      open_mapping = [[<C-t>]],
       close_on_exit = true,
       direction = "float",
-      float_opts = {
-        border = "curved",
-        width  = 160,
-        height = 30,
-        winblend = 10,
-      },
+      direction = "horizontal",
+      size = function(term)
+        if term.direction == "horizontal" then
+          return 15
+        else
+          return vim.o.columns * 0.4
+        end
+      end,
     },
   },
 }
