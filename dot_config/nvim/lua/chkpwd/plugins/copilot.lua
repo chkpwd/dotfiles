@@ -1,0 +1,22 @@
+return {
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  event = "InsertEnter",
+  config = function()
+    require("copilot").setup({
+      suggestion = {
+        enabled = true,
+        auto_trigger = false,
+        debounce = 75,
+      },
+      filetypes = {
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+      },
+      copilot_node_command = 'node', -- Node.js version must be > 18.x
+      server_opts_overrides = {},
+    })
+  end,
+}
