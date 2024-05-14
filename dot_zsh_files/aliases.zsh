@@ -8,7 +8,7 @@ alias ...='cd ../..'
 alias g='git'
 
 # Neovim Shortcuts
-alias vim='nvim'
+alias v='nvim'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
