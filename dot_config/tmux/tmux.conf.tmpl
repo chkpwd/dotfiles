@@ -32,6 +32,7 @@ set -g @plugin 'wfxr/tmux-fzf-url'
 set -g @plugin 'catppuccin/tmux'
 set -g @plugin 'omerxx/tmux-sessionx'
 set -g @plugin 'alexwforsythe/tmux-which-key'
+set -g @plugin 'tmux-plugins/tmux-cpu'
 
 set -g @sessionx-bind 'o'
 set -g @continuum-restore 'on'
@@ -53,7 +54,7 @@ set -g @catppuccin_window_current_text "#{pane_current_path}"
 set -g @catppuccin_status_fill "all"
 
 set -g @catppuccin_status_modules_left "session appLication"
-set -g @catppuccin_status_modules_right "directory date_time"
+set -g @catppuccin_status_modules_right "directory cpu date_time"
 
 set -g @catppuccin_date_time_text "%m-%d-%Y %H:%M"
 
