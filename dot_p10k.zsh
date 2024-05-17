@@ -62,13 +62,8 @@
   # Right prompt segments.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    command_execution_time    # previous command duration
-    context                   # user@host
-    time                      # current time
-    # =========================[ Line #2 ]=========================
     newline                   # \n
     direnv                    # direnv status
-    virtualenv                # python virtual environment
     kubecontext               # current kubernetes context
     terraform                 # terraform workspace
     nix_shell                 # nix shell
