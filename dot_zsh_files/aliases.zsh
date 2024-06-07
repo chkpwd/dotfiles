@@ -10,6 +10,8 @@ alias g='git'
 # Neovim Shortcuts
 alias v='nvim'
 
+alias cat='bat --paging=never'
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
