@@ -8,6 +8,9 @@ return {
         enabled = true,
         auto_trigger = true,
         debounce = 75,
+        keymap = {
+          accept = "<Tab>",
+        },
       },
       filetypes = {
         help = false,
