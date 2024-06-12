@@ -50,7 +50,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 export DIRENV_LOG_FORMAT=
 eval "$(direnv hook zsh)" # Hook into shell
 eval "$(fzf --zsh)"
-terraform -install-autocomplete
 compdef kubecolor=kubectl
 . <(flux completion zsh)
 . <(helm completion zsh)
