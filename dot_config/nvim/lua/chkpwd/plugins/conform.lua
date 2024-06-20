@@ -12,7 +12,7 @@ return {
         yaml = { "prettier" },
         markdown = { "prettier" },
         lua = { "stylua" },
-        python = { "isort", "black" },
+        python = { "ruff" },
         nix = { "alejandra" },
         terraform = { "terraform_fmt" },
         ansible = { "ansible" },

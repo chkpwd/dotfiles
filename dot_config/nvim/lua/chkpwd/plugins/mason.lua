@@ -28,7 +28,7 @@ return {
       -- list of servers for mason to install
       ensure_installed = {
         "lua_ls",
-        "pyright",
+        "ruff",
         "html",
         "cssls",
         "helm_ls",
@@ -41,9 +41,6 @@ return {
       ensure_installed = {
         "prettier",
         "stylua",
-        "isort",
-        "black",
-        "pylint",
         "yamllint",
         "yamlfmt",
         "hclfmt",
