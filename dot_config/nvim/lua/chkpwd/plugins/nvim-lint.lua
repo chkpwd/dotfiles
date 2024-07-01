@@ -15,7 +15,7 @@ return {
 			css = { "prettier" },
 			html = { "prettier" },
 			markdown = { "prettier" },
-			lua = { "stylua" },
+			lua = { "selene" },
 			terraform = { "tflint" },
 		}
 

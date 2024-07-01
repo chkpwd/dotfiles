@@ -23,25 +23,25 @@ return {
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"lua_ls",
-				"ruff",
-				"helm_ls",
-				"terraformls",
-				"ansiblels",
-				"prettier",
-				"stylua",
-				"yaml-language-server",
-				"yamllint",
-				"yamlfmt",
-				"json-lsp",
-				"jsonlint",
-				"fixjson",
-				"terraform-ls",
-				"tflint",
-				"hclfmt",
-				"helm-ls",
-				"ansible-lint",
-				"nixpkgs-fmt",
+				"lua_ls", -- lsp
+				"ruff", -- formatter
+				"helm-ls", -- lsp
+				"terraformls", -- lsp
+				"ansiblels", -- lsp
+				"prettier", -- formatter
+				"stylua", -- formatter
+				"selene", -- linter
+				"yaml-language-server", -- lsp
+				"yamllint", -- linter
+				"yamlfmt", -- formatter
+				"json-lsp", -- lsp
+				"jsonlint", -- linter
+				"fixjson", -- formatter
+				"terraform-ls", -- lsp
+				"tflint", -- linter
+				"hclfmt", -- formatter
+				"ansible-lint", -- linter
+				"nixpkgs-fmt", -- formatter
 			},
 		})
 	end,
