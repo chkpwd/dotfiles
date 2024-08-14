@@ -1,11 +1,6 @@
 {{ if eq .chezmoi.os "darwin" -}}
 Include ~/.orbstack/ssh/config
 {{ end -}}
-
-Host *
-     IdentityFile ~/.ssh/main
-     User chkpwd
-
 Host ct-01-ec2
      HostName 44.200.120.216
      User admin
@@ -16,3 +11,8 @@ Host hass-srv-01
      User chkpwd
      IdentityFile ~/.ssh/main
      Port 23
+
+Host *
+     IdentityFile ~/.ssh/main
+     User chkpwd
+
