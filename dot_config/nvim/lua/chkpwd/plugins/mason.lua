@@ -41,7 +41,7 @@ return {
 				"tflint", -- linter
 				"hclfmt", -- formatter
 				"ansible-lint", -- linter
-				"nixpkgs-fmt", -- formatter
+				--"nixpkgs-fmt", -- formatter
 			},
 		})
 	end,
