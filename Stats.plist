@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Battery_position</key>
+	<integer>6</integer>
+	<key>Battery_state</key>
+	<false/>
+	<key>Bluetooth_position</key>
+	<integer>7</integer>
+	<key>Bluetooth_sensors_mode</key>
+	<string>automatic</string>
+	<key>Bluetooth_state</key>
+	<false/>
+	<key>CPU_position</key>
+	<integer>0</integer>
+	<key>CPU_state</key>
+	<false/>
+	<key>Clock_position</key>
+	<integer>8</integer>
+	<key>CombinedModules</key>
+	<true/>
+	<key>Disk_position</key>
+	<integer>3</integer>
+	<key>Disk_state</key>
+	<false/>
+	<key>GPU_position</key>
+	<integer>1</integer>
+	<key>LaunchAtLoginNext</key>
+	<true/>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
+	<string>{800, 448}</string>
+	<key>NSToolbar Configuration eu.exelban.Stats.Settings.Toolbar</key>
+	<dict>
+		<key>TB Display Mode</key>
+		<integer>1</integer>
+		<key>TB Icon Size Mode</key>
+		<integer>1</integer>
+		<key>TB Is Shown</key>
+		<true/>
+		<key>TB Size Mode</key>
+		<integer>1</integer>
+	</dict>
+	<key>NSWindow Frame NSNavPanelAutosaveName</key>
+	<string>356 372 800 448 0 0 1512 944 </string>
+	<key>Network_label_position</key>
+	<integer>1</integer>
+	<key>Network_networkChart_position</key>
+	<integer>2</integer>
+	<key>Network_position</key>
+	<integer>5</integer>
+	<key>Network_speed_position</key>
+	<integer>0</integer>
+	<key>Network_state_position</key>
+	<integer>3</integer>
+	<key>RAM_notifications_free_state</key>
+	<true/>
+	<key>RAM_notifications_pressure_state</key>
+	<true/>
+	<key>RAM_notifications_pressure_value</key>
+	<string>warning</string>
+	<key>RAM_position</key>
+	<integer>2</integer>
+	<key>Sensors_position</key>
+	<integer>4</integer>
+	<key>ble_e8-ee-cc-c6-bd-34</key>
+	<true/>
+	<key>runAtLoginInitialized</key>
+	<true/>
+	<key>setupProcess</key>
+	<true/>
+	<key>telemetry</key>
+	<false/>
+	<key>telemetry_id</key>
+	<string>B8A1281E-E650-4AF7-A310-157F6FBE88F1</string>
+	<key>updater_check_ts</key>
+	<integer>1723615781</integer>
+	<key>version</key>
+	<string>2.11.5</string>
+</dict>
+</plist>

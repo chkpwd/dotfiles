@@ -4,7 +4,7 @@
 
 ## Installation
 ```bash
-sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply chkpwd
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init --ssh --apply chkpwd
 ```
 
 ## Update & apply local dotfiles from repo
