@@ -25,6 +25,7 @@ return {
 			ensure_installed = {
 				"lua_ls", -- lsp
 				"ruff", -- formatter
+				"basedpyright", -- lsp
 				"helm-ls", -- lsp
 				"terraformls", -- lsp
 				"ansiblels", -- lsp
