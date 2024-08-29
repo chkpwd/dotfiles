@@ -9,7 +9,7 @@ return {
 				auto_trigger = true,
 				debounce = 75,
 				keymap = {
-					accept = "<CR>",
+					accept = "<Tab>",
 				},
 			},
 			filetypes = {
