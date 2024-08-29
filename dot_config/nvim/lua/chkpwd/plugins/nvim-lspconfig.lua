@@ -5,16 +5,30 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
+		{
+			"msvechla/yaml-companion.nvim",
+			branch = "kubernetes_crd_detection",
+			dependancies = { "nvim-lua/plenary.nvim" },
+			config = function()
+				require("telescope").load_extension("yaml_schema")
+			end,
+		},
 	},
 	config = function()
-		-- import lspconfig plugin
+		-- Import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
-		-- import mason_lspconfig plugin
+		-- Import yaml companion plugin
+		local yaml_companion = require("yaml-companion")
+
+		-- Import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
 
-		-- import cmp-nvim-lsp plugin
+		-- Import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+		-- Import yaml-companion plugin
+		local yaml_companion = require("yaml-companion")
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -22,64 +36,59 @@ return {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
 				-- Buffer local mappings.
-				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf, silent = true }
 
-				-- set keybinds
+				-- Set keybinds
 				opts.desc = "Show LSP references"
-				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
 				opts.desc = "Go to declaration"
-				keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+				keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
 				opts.desc = "Show LSP definitions"
-				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
 				opts.desc = "Show LSP implementations"
-				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 
 				opts.desc = "Show LSP type definitions"
-				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 				opts.desc = "See available code actions"
-				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
 				opts.desc = "Smart rename"
-				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
 				opts.desc = "Show buffer diagnostics"
-				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
 				opts.desc = "Show line diagnostics"
-				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
 				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 
 				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+				keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 				opts.desc = "Show documentation for what is under cursor"
-				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+				keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
 				opts.desc = "Restart LSP"
-				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 
 				opts.desc = "Toggle Inlay Hints"
-				--keymap.set("n", "<leader>ih", vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()), opts) -- toggle inlay hints
 				keymap.set("n", "<leader>ih", function()
 					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 				end, opts)
 			end,
 		})
 
-		-- used to enable autocompletion (assign to every lsp server config)
+		-- Used to enable autocompletion (assign to every LSP server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- get client id
-
 		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
@@ -87,19 +96,19 @@ return {
 		end
 
 		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
+			-- Default handler for installed servers
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,
 			["lua_ls"] = function()
-				-- configure lua server (with special settings)
+				-- Configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
-							-- make the language server recognize "vim" global
+							-- Make the language server recognize "vim" global
 							diagnostics = {
 								globals = { "vim" },
 							},
@@ -108,6 +117,39 @@ return {
 							},
 							hint = { enable = true },
 						},
+					},
+				})
+			end,
+			["yamlls"] = function()
+				lspconfig.yamlls.setup({
+					settings = {
+						redhat = { telemetry = { enabled = false } },
+						yaml = {
+							validate = true,
+							format = {
+								enable = true,
+								singleQuote = false,
+							},
+							hover = true,
+							schemaStore = { enable = false, url = "" },
+							keyOrdering = false,
+							completion = true,
+							schemas = {
+								["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose.{yml,yaml}",
+								["https://json.schemastore.org/gitlab-ci"] = ".gitlab-ci.yml",
+								["https://json.schemastore.org/pre-commit-config"] = ".pre-commit-config.{yml,yaml}",
+								["https://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+								["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+								["https://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+								["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.1-standalone-strict/all.json"] = "*.yaml",
+							},
+						},
+					},
+				})
+				yaml_companion.setup({
+					schema = {
+						kubernetes = { enabled = true },
+						kubernetes_crd = { enabled = true },
 					},
 				})
 			end,
