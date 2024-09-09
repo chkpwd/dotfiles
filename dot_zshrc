@@ -43,18 +43,12 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 export DIRENV_LOG_FORMAT=
 eval "$(direnv hook zsh)" # Hook into shell
 eval "$(fzf --zsh)"
-compdef kubecolor=kubectl
-. <(flux completion zsh)
-. <(helm completion zsh)
-. <(kubectl completion zsh)
-. <(vcluster completion zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ###-- Sources --###
 source ~/.zsh_files/aliases.zsh
-source ~/.zsh_files/kube_aliases.zsh
 source ~/.zsh_files/utils.zsh
 
 ###-- Paths --###
