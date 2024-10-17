@@ -40,8 +40,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 ###-- Shell integrations --###
-export DIRENV_LOG_FORMAT=
-eval "$(direnv hook zsh)" # Hook into shell
 eval "$(fzf --zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -52,7 +50,7 @@ source ~/.zsh_files/aliases.zsh
 source ~/.zsh_files/utils.zsh
 
 ###-- Paths --###
-#export PATH=~/.venv/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 ###-- Settings --###
 bindkey -e

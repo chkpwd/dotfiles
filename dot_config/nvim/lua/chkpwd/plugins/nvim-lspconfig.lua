@@ -61,10 +61,10 @@ return {
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
 				opts.desc = "Show buffer diagnostics"
-				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+				keymap.set("n", "<leader>bD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
 				opts.desc = "Show line diagnostics"
-				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+				keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
 
 				opts.desc = "Go to previous diagnostic"
 				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -135,13 +135,14 @@ return {
 							keyOrdering = false,
 							completion = true,
 							schemas = {
+								--[require("kubernetes").yamlls_schema()] = "kubernetes/*.{yml,yaml}",
 								["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose.{yml,yaml}",
 								["https://json.schemastore.org/gitlab-ci"] = ".gitlab-ci.yml",
 								["https://json.schemastore.org/pre-commit-config"] = ".pre-commit-config.{yml,yaml}",
 								["https://json.schemastore.org/github-workflow"] = ".github/workflows/*",
 								["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-								["https://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-								["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.1-standalone-strict/all.json"] = "*.yaml",
+								["https://json.schemastore.org/chart"] = "kubernetes/*-chart.{yml,yaml}",
+								["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.1-standalone-strict/all.json"] = "kubernetes/*.{yml,yaml}",
 							},
 						},
 					},

@@ -172,23 +172,3 @@ alias kgcj='kubectl get cronjob'
 alias kecj='kubectl edit cronjob'
 alias kdcj='kubectl describe cronjob'
 alias kdelcj='kubectl delete cronjob'
-
-# vCluster management.
-alias vc='vcluster'
-alias vcc='vcluster create'
-alias vcn='vcluster connect'
-alias vcd='vcluster delete'
-alias vcdc='vcluster disconnect'
-alias vcg='vcluster get'
-alias vcl='vcluster list'
-alias vcp='vcluster pause'
-alias vcr='vcluster resume'
-alias vcu='vcluster upgrade'
-
-# Flux shortcuts
-alias f='flux'
-alias frk='flux reconcile kustomization k3s-onprem --with-source'
-alias fu='git add .; git commit --amend --no-edit; git push -f; flux reconcile kustomization k3s-onprem --with-source'
-
-# Quality of Life
-alias errpods="kgp -A | grep -Ev 'Running|Completed'"
