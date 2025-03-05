@@ -62,7 +62,6 @@ alias dps="docker ps"
 alias dkac="docker kill \$(docker ps -q)"
 alias drmc="docker rm \$(docker ps -a -q)"
 alias drmi="docker rmi \$(docker images -q -f dangling=true)"
-alias kairosctl="docker run --rm ghcr.io/tyzbit/kairosctl:v2.3.1"
 alias td4a="docker run --rm -d -p 5000:5000 --name td4a ghcr.io/tigattack/td4a:2.0.6"
 
 # Terraform shortcuts
