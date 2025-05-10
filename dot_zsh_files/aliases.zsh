@@ -6,6 +6,7 @@ alias ...='cd ../..'
 
 # Git Shortcuts
 alias g='git'
+alias gpa="GH_FORCE_TTY=100% gh pr list | fzf -m --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --header-lines 4 | awk '{print \$1}' | xargs -n1 gh pr merge -m"
 
 # Neovim Shortcuts
 alias v='nvim'
