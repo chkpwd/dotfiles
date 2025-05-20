@@ -156,11 +156,5 @@ alias reload="exec ${SHELL} -l"
 alias flushdns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
 # Misc
-alias apex-info='curl "https://api.mozambiquehe.re/maprotation?auth={{ (bitwardenSecrets "fec199c4-8692-4e84-9a55-b11f004ad0c5" .accessToken).value }}" | jq "{
-  \"current_map\": .current.map,
-  \"next_map\": .next.map,
-  \"current_duration_minutes\": .current.DurationInMinutes,
-  \"next_duration_minutes\": .next.DurationInMinutes
-}"'
-
 alias bcr='curl -s -X GET -H "Authorization: Bearer $BWS_ACCESS_TOKEN" "http://mgmt-srv-01:5000/reset"'
+
