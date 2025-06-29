@@ -13,6 +13,8 @@ alias v='nvim'
 
 alias cat='bat --paging=never'
 
+alias watch='hwatch '
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
