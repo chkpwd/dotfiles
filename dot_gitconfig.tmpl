@@ -284,7 +284,7 @@
     # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
     useConfigOnly = true
         name = Bryan Jones
-        email = unix.chkpwd@gmail.com
+        email = {{ .email | quote }}
 
     # [!] DO NOT store sensitive information such as the Git user
     # credentials (`name` / `email`), or things such as the `signingkey`

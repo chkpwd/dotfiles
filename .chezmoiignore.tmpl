@@ -1,15 +1,21 @@
 {{- if not (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) }}
 **/*.zsh*
 .zsh_files/**
+{{- if eq .machine.work }}
 .bash_history
 .vimrc
 .terraform.d/**
-.config/helm/**
+.config/pet/**
+.config/sops/**
+.kube/**
+.docker/**
+.ssh/**
+{{ end -}}
 .config/tmux/**
-{{ end }}
+{{- end }}
 {{ if ne .chezmoi.os "windows" }}
 vencord-settings-backup.json
-{{ end }}
-LICENSE 
+{{- end }}
+LICENSE
 README.md
 
