@@ -11,7 +11,7 @@ vencord-settings-backup.json
 LICENSE
 README.md
 
-{{- if .machine.work }}
+{{- if and .machine (index .machine "work") }}
 .bash_history
 .vimrc
 .terraform.d/**
