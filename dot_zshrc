@@ -35,6 +35,7 @@ autoload -Uz +X compinit && compinit
 
 # Custom Completions
 source <(talosctl completion zsh)
+complete -C $(which terraform) terraform
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
