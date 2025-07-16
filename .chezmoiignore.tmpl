@@ -1,7 +1,14 @@
 {{- if not (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) }}
 **/*.zsh*
 .zsh_files/**
-{{- if .machine.work }}
+.config/tmux/**
+{{- end }}
+{{ if ne .chezmoi.os "windows" }}
+vencord-settings-backup.json
+{{- end }}
+LICENSE
+README.md
+{{- if and (eq .chezmoi.os "darwin") .machine.work }}
 .bash_history
 .vimrc
 .terraform.d/**
@@ -10,12 +17,4 @@
 .kube/**
 .docker/**
 .ssh/**
-{{ end -}}
-.config/tmux/**
 {{- end }}
-{{ if ne .chezmoi.os "windows" }}
-vencord-settings-backup.json
-{{- end }}
-LICENSE
-README.md
-
