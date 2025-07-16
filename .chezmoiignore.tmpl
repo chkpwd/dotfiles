@@ -3,12 +3,16 @@
 .zsh_files/**
 .config/tmux/**
 {{- end }}
+
 {{ if ne .chezmoi.os "windows" }}
 vencord-settings-backup.json
 {{- end }}
+
 LICENSE
 README.md
-{{- if and (eq .chezmoi.os "darwin") .machine.work }}
+
+# Ignore these files only on work machines
+{{- if .machine.work }}
 .bash_history
 .vimrc
 .terraform.d/**
