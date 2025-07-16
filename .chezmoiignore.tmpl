@@ -1,7 +1,7 @@
 {{- if not (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) }}
 **/*.zsh*
 .zsh_files/**
-{{- if eq .machine.work }}
+{{- if .machine.work }}
 .bash_history
 .vimrc
 .terraform.d/**
