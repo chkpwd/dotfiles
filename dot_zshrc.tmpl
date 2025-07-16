@@ -34,7 +34,10 @@ zinit snippet OMZP::colored-man-pages
 autoload -Uz +X compinit && compinit
 
 # Custom Completions
+{{- if .machine.personal }}
 source <(talosctl completion zsh)
+{{- end }}
+
 complete -C $(which terraform) terraform
 
 # Completion styling
