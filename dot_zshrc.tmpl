@@ -14,9 +14,9 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Zsh Plugins
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-syntax-highlighting
 
 # Snippets
 zinit snippet OMZP::z
@@ -24,8 +24,7 @@ zinit snippet OMZP::git
 zinit snippet OMZP::colored-man-pages
 
 ###-- Autocompletes --###
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+export CARAPACE_BRIDGES='zsh'
 source <(carapace _carapace)
 
 # Completion styling
@@ -37,12 +36,14 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 ###-- Shell integrations --###
 export DIRENV_LOG_FORMAT=
 eval "$(fzf --zsh)"
+eval "$(direnv hook zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ###-- Sources --###
 source ~/.zsh_files/aliases.zsh
+source ~/.zsh_files/kube_aliases.zsh
 source ~/.zsh_files/utils.zsh
 
 ###-- Paths --###
@@ -65,7 +66,6 @@ export EDITOR='nvim'
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory

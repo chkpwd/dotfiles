@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Kubectl
-alias k=kubectl
+alias k='kubectl'
 
 # Execute a kubectl command against all namespaces
 alias kca='_kca(){ kubectl "$@" --all-namespaces;  unset -f _kca; }; _kca'
