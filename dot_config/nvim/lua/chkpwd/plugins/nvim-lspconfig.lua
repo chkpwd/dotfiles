@@ -3,42 +3,30 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"williamboman/mason-lspconfig.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
 		{
 			"msvechla/yaml-companion.nvim",
 			branch = "kubernetes_crd_detection",
-			dependancies = { "nvim-lua/plenary.nvim" },
+			dependencies = { "nvim-lua/plenary.nvim" },
 			config = function()
 				require("telescope").load_extension("yaml_schema")
 			end,
 		},
 	},
 	config = function()
-		-- Import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
-		-- Import yaml companion plugin
 		local yaml_companion = require("yaml-companion")
-
-		-- Import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
-
-		-- Import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-		-- Import yaml-companion plugin
-		local yaml_companion = require("yaml-companion")
-
-		local keymap = vim.keymap -- for conciseness
+		local keymap = vim.keymap
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				-- Buffer local mappings.
 				local opts = { buffer = ev.buf, silent = true }
 
-				-- Set keybinds
 				opts.desc = "Show LSP references"
 				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
@@ -85,75 +73,61 @@ return {
 			end,
 		})
 
-		-- Used to enable autocompletion (assign to every LSP server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
-			-- Default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["lua_ls"] = function()
-				-- Configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- Make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-							hint = { enable = true },
-						},
-					},
-				})
-			end,
-			["yamlls"] = function()
-				lspconfig.yamlls.setup({
-					settings = {
-						redhat = { telemetry = { enabled = false } },
-						yaml = {
-							validate = true,
-							format = {
-								enable = true,
-								singleQuote = false,
-							},
-							hover = true,
-							schemaStore = { enable = false, url = "" },
-							keyOrdering = false,
-							completion = true,
-							schemas = {
-								--[require("kubernetes").yamlls_schema()] = "kubernetes/*.{yml,yaml}",
-								["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose.{yml,yaml}",
-								["https://json.schemastore.org/gitlab-ci"] = ".gitlab-ci.yml",
-								["https://json.schemastore.org/pre-commit-config"] = ".pre-commit-config.{yml,yaml}",
-								["https://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-								["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-								["https://json.schemastore.org/chart"] = "kubernetes/*-chart.{yml,yaml}",
-								["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.1-standalone-strict/all.json"] = "kubernetes/*.{yml,yaml}",
+		mason_lspconfig.setup({
+			ensure_installed = {
+				"lua_ls",
+				"basedpyright",
+				"yamlls",
+				"helm_ls",
+				"terraformls",
+				"ansiblels",
+				"jsonls",
+			},
+			handlers = {
+				function(server_name)
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+					})
+				end,
+				["yamlls"] = function()
+					lspconfig.yamlls.setup({
+						settings = {
+							redhat = { telemetry = { enabled = false } },
+							yaml = {
+								validate = true,
+								format = { enable = true, singleQuote = false },
+								hover = true,
+								schemaStore = { enable = false, url = "" },
+								keyOrdering = false,
+								completion = true,
+								schemas = {
+									["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose.{yml,yaml}",
+									["https://json.schemastore.org/gitlab-ci"] = ".gitlab-ci.yml",
+									["https://json.schemastore.org/pre-commit-config"] = ".pre-commit-config.{yml,yaml}",
+									["https://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+									["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+									["https://json.schemastore.org/chart"] = "kubernetes/*-chart.{yml,yaml}",
+									["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.1-standalone-strict/all.json"] = "kubernetes/*.{yml,yaml}",
+								},
 							},
 						},
-					},
-				})
-				yaml_companion.setup({
-					schema = {
-						kubernetes = { enabled = true },
-						kubernetes_crd = { enabled = true },
-					},
-				})
-			end,
+					})
+					yaml_companion.setup({
+						schema = {
+							kubernetes = { enabled = true },
+							kubernetes_crd = { enabled = true },
+						},
+					})
+				end,
+			},
 		})
 	end,
 }
