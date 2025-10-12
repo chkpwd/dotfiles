@@ -1,65 +1,86 @@
-{{ if  or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") }}
-source-file ~/.config/tmux/tmux.reset.conf
-set-option -g default-terminal 'screen-256color'
-set-option -g terminal-overrides ',xterm-256color:RGB'
-
+{{ if  or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
+# Terminal
+set -g default-terminal "tmux-256color"
 set -g prefix ^A
 set -g base-index 1
 set -g detach-on-destroy off
 set -g escape-time 0
-set -g history-limit 1000000
+set -g history-limit 200000
 set -g renumber-windows on
 set -g set-clipboard on
 set -g mouse on
 set -g status-position top
-set -g default-terminal "${TERM}"
 setw -g mode-keys vi
 set -g pane-active-border-style 'fg=magenta,bg=default'
 set -g pane-border-style 'fg=brightblack,bg=default'
-set -g mouse on
 
+# Plugin-specific options
 set -g @fzf-url-fzf-options '-p 60%,30% --prompt="   " --border-label=" Open URL "'
 set -g @fzf-url-history-limit '2000'
 
+# Core plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'fcsonline/tmux-thumbs'
-set -g @plugin 'sainnhe/tmux-fzf'
-set -g @plugin 'wfxr/tmux-fzf-url'
+# set -g @plugin 'sainnhe/tmux-fzf'
 set -g @plugin 'catppuccin/tmux'
-set -g @plugin 'omerxx/tmux-sessionx'
-set -g @plugin 'alexwforsythe/tmux-which-key'
-set -g @plugin 'tmux-plugins/tmux-cpu'
 
-set -g @sessionx-bind 'o'
 set -g @continuum-restore 'on'
+set -g @continuum-boot-options 'iterm'
 set -g @resurrect-strategy-nvim 'session'
 set -g @catppuccin_flavour 'mocha'
+
+set -g @catppuccin_window_text " #W"
+set -g @catppuccin_window_current_text " #W"
 
 set -g @catppuccin_window_left_separator "█"
 set -g @catppuccin_window_right_separator "█ "
 set -g @catppuccin_window_number_position "right"
 set -g @catppuccin_window_middle_separator "  █"
 
-set -g @catppuccin_status_left_separator  ""
+set -g @catppuccin_status_left_separator ""
 set -g @catppuccin_status_right_separator " "
 set -g @catppuccin_status_connect_separator "yes"
 
 set -g @catppuccin_window_default_fill "number"
 set -g @catppuccin_window_current_fill "number"
-set -g @catppuccin_window_current_text "#{pane_current_path}"
+set -g @catppuccin_window_current_text "#W#{?window_zoomed_flag,(),}"
 set -g @catppuccin_status_fill "all"
 
-set -g @catppuccin_status_modules_left "session appLication"
+set -g @catppuccin_status_modules_left "session application"
 set -g @catppuccin_status_modules_right "directory cpu date_time"
-
 set -g @catppuccin_date_time_text "%m-%d-%Y %H:%M"
 
-set -g @catppuccin_window_current_text "#W#{?window_zoomed_flag,(),}"
-
-# Initialize TMUX plugin manager
 run '~/.tmux/plugins/tpm/tpm'
-{{ end -}}
+
+bind ^X lock-server
+bind ^C new-window -c "$HOME"
+bind | split-window
+bind s split-window -v -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
+bind ^A last-window
+bind w choose-window
+bind W display-popup -E "tmux list-windows -a -F '#{session_name}:#{window_index} - #{window_name}' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | sed -E 's/\s-.*$//' | xargs -r tmux switch-client -t"
+bind r command-prompt "rename-window %%"
+bind R source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded"
+bind z resize-pane -Z
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+bind -r -T prefix , resize-pane -L 20
+bind -r -T prefix . resize-pane -R 20
+bind -r -T prefix - resize-pane -D 7
+bind -r -T prefix = resize-pane -U 7
+bind : command-prompt
+bind * setw synchronize-panes \; display-message "Toggled sync panes"
+bind c kill-pane
+bind x swap-pane -D
+bind S choose-session
+bind-key L command-prompt -p "new-session:" "new-session -s '%%'"
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind P set -g pane-border-status top
+{{ end }}

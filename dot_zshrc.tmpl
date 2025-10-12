@@ -25,10 +25,8 @@ zinit snippet OMZP::colored-man-pages
 
 ###-- Autocompletes --###
 # Custom Completions
-{{- if (and .machine (index .machine "work")) }}
 autoload -Uz compinit
 compinit
-{{- end }}
 export CARAPACE_BRIDGES='zsh'
 source <(carapace _carapace)
 
