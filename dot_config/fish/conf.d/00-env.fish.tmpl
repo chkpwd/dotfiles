@@ -1,0 +1,12 @@
+set -gx KUBE_EDITOR nvim
+set -gx VISUAL nvim
+set -gx EDITOR nvim
+set -gx GOPATH {{ .chezmoi.homeDir }}/.go
+set -gx PY_COLORS true
+set -gx GPG_TTY (tty)
+set -gx LANG en_US.utf-8
+
+fish_add_path --global "{{ .chezmoi.homeDir }}/.local/bin"
+fish_add_path --global "{{ .chezmoi.homeDir }}/.cargo/bin"
+fish_add_path --global "{{ .chezmoi.homeDir }}/.krew/bin"
+fish_add_path --global "{{ .chezmoi.homeDir }}/.go/bin"
