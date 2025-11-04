@@ -10,3 +10,6 @@ if type -q kubectl
     abbr k kubectl
 end
 
+if type -q nvim
+  abbr v nvimm
+end
