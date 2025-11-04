@@ -1,4 +1,4 @@
-set -g fish_transient_prompt 1
+function fish_mode_prompt; end
 
 if not set -q -g __fish_repo_helpers_defined
     set -g __fish_repo_helpers_defined
