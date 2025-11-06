@@ -26,11 +26,6 @@ abbr pubip 'dig +short myip.opendns.com @resolver1.opendns.com'
 abbr localip 'ipconfig getifaddr en0'
 abbr ips 'ifconfig -a | grep -o "inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)" | awk "{ sub(/inet6? (addr:)? ?/, \"\"); print }"'
 
-# Terraform
-for name cmd in tf terraform tfi 'terraform init' tfp 'terraform plan' tfa 'terraform apply' tfau 'terraform apply -auto-approve'
-    abbr $name $cmd
-end
-
 # Maintenance
 abbr cleanup 'find . -type f -name "*.DS_Store" -ls -delete'
 abbr emptytrash 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* "delete from LSQuarantineEvent"'
