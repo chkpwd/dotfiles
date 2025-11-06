@@ -1,15 +1,37 @@
-if type -q bat
-    abbr cat bat
+#!/usr/bin/env fish
+
+# Conditional abbreviations
+for cmd in bat chezmoi kubectl nvim hwatch
+    if type -q $cmd
+        switch $cmd
+            case bat
+                abbr cat bat
+            case chezmoi
+                abbr cm chezmoi
+            case kubectl
+                abbr k kubectl
+            case nvim
+                abbr v nvim
+            case hwatch
+                abbr watch hwatch
+        end
+    end
 end
 
-if type -q chezmoi
-    abbr cm chezmoi
+# Git
+abbr gpa 'GH_FORCE_TTY=100% gh pr list | fzf -m --ansi --preview "GH_FORCE_TTY=100% gh pr view {1}" --header-lines 4 | awk "{print \$1}" | xargs -n1 gh pr merge -m'
+
+# IP utilities
+abbr pubip 'dig +short myip.opendns.com @resolver1.opendns.com'
+abbr localip 'ipconfig getifaddr en0'
+abbr ips 'ifconfig -a | grep -o "inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)" | awk "{ sub(/inet6? (addr:)? ?/, \"\"); print }"'
+
+# Terraform
+for name cmd in tf terraform tfi 'terraform init' tfp 'terraform plan' tfa 'terraform apply' tfau 'terraform apply -auto-approve'
+    abbr $name $cmd
 end
 
-if type -q kubectl
-    abbr k kubectl
-end
-
-if type -q nvim
-  abbr v nvimm
-end
+# Maintenance
+abbr cleanup 'find . -type f -name "*.DS_Store" -ls -delete'
+abbr emptytrash 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* "delete from LSQuarantineEvent"'
+abbr flushdns 'dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
