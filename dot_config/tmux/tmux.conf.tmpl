@@ -2,6 +2,7 @@
 # Terminal
 set -g default-terminal "tmux-256color"
 set -g prefix ^A
+set -g pane-border-status top
 set -g base-index 1
 set -g detach-on-destroy off
 set -g escape-time 0
@@ -82,5 +83,5 @@ bind x swap-pane -D
 bind S choose-session
 bind-key L command-prompt -p "new-session:" "new-session -s '%%'"
 bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind P set -g pane-border-status top
+bind P set -g pane-border-status off
 {{ end }}
