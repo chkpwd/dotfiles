@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------------------------------------------------
+# Install krewfile and packages
+# krewfile_plugins hash: {{ include "dot_config/krewfile/krewfile" | sha256sum }}
+# ---------------------------------------------------------------------------------------------------------------------
+
+go install github.com/brumhard/krewfile@latest
+
+krewfile -command "kubectl krew" -file {{ .chezmoi.homeDir }}/.config/krewfile/krewfile -upgrade

@@ -1,0 +1,10 @@
+index netshoot https://github.com/nilic/kubectl-netshoot.git
+
+netshoot/netshoot
+browse-pvc
+rook-ceph
+explore
+stern
+neat
+ctx
+ns

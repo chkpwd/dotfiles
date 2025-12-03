@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+{{ if (eq .chezmoi.os "darwin") }}
+# ---------------------------------------------------------------------------------------------------------------------
+# Install Homebrew packages
+# homebrew/brewfile hash: {{ include "dot_config/homebrew/brewfile.tmpl" | sha256sum }}
+# ---------------------------------------------------------------------------------------------------------------------
+export HOMEBREW_CASK_OPTS=--no-quarantine
+echo "Running brew bundle"
+brew bundle --all --file "{{ .chezmoi.homeDir }}/.config/homebrew/brewfile"
+
+echo "Running brew bundle cleanup"
+brew bundle cleanup --brews --casks --taps --mas --no-vscode --file "{{ .chezmoi.homeDir }}/.config/homebrew/brewfile" --force || true
+
+{{- end }}
