@@ -68,6 +68,7 @@ brew "yamllint"
 brew "yq"
 brew "yt-dlp"
 
+{{- if and .machine (index .machine "work") }}
 cask "appcleaner"
 cask "audacity"
 cask "autodesk-fusion"
@@ -104,3 +105,4 @@ mas "Twingate", id: 1501592214
 mas "WhatsApp", id: 310633997
 mas "Wireguard", id: 1451685025
 mas "karakeeper", id: 6746722790
+{{ end }}
