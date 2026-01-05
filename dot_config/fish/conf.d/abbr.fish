@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Conditional abbreviations
-for cmd in bat chezmoi kubectl nvim hwatch
+for cmd in bat chezmoi kubectl nvim hwatch hx
     if type -q $cmd
         switch $cmd
             case bat
@@ -12,6 +12,8 @@ for cmd in bat chezmoi kubectl nvim hwatch
                 abbr k kubectl
             case hwatch
                 abbr watch hwatch
+            case hx
+                abbr h hx
         end
     end
 end
