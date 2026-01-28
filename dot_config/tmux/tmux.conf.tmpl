@@ -84,4 +84,5 @@ bind S choose-session
 bind-key L command-prompt -p "new-session:" "new-session -s '%%'"
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind P set -g pane-border-status off
+bind O split-window -v \; send-keys "opencode" Enter
 {{ end }}
