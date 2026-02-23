@@ -12,3 +12,7 @@ select = "underline"
 
 [editor.indent-guides]
 render = true
+
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
