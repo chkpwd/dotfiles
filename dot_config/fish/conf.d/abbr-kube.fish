@@ -167,3 +167,13 @@ abbr kgcj 'kubectl get cronjob'
 abbr kecj 'kubectl edit cronjob'
 abbr kdcj 'kubectl describe cronjob'
 abbr kdelcj 'kubectl delete cronjob'
+
+# Kopia
+abbr kopia 'kubectl exec -it -n kube-system deploy/kopia -- kopia --config-file /config/repository.config'
+abbr ksla 'kubectl exec -it -n kube-system deploy/kopia -- kopia --config-file /config/repository.config snapshot list --all'
+abbr kslam 'kubectl exec -it -n kube-system deploy/kopia -- kopia --config-file /config/repository.config snapshot list --all --manifest-id'
+abbr ksv 'kubectl exec -it -n kube-system deploy/kopia -- kopia --config-file /config/repository.config snapshot verify'
+abbr kse 'kubectl exec -it -n kube-system deploy/kopia -- kopia --config-file /config/repository.config snapshot expire'
+abbr krst 'kubectl exec -it -n kube-system deploy/kopia -- kopia --config-file /config/repository.config repository status'
+abbr krmaint 'kubectl exec -it -n kube-system deploy/kopia -- kopia --config-file /config/repository.config maintenance run'
+abbr kpl 'kubectl exec -it -n kube-system deploy/kopia -- kopia --config-file /config/repository.config policy list'
