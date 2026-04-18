@@ -8,6 +8,10 @@
 vencord-settings-backup.json
 {{- end }}
 
+{{ if ne .chezmoi.os "darwin" }}
+istats-menu-settings.ismp7
+{{- end }}
+
 LICENSE
 README.md
 

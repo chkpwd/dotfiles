@@ -12,14 +12,35 @@ set -g set-clipboard on
 set -g mouse on
 set -g status-position top
 setw -g mode-keys vi
-set -g pane-active-border-style 'fg=magenta,bg=default'
-set -g pane-border-style 'fg=brightblack,bg=default'
 
 # Plugin-specific options
-set -g @fzf-url-fzf-options '-p 60%,30% --prompt="   " --border-label=" Open URL "'
+set -g @fzf-url-fzf-options '-p 60%,30% --prompt="   " --border-label=" Open URL "'
 set -g @fzf-url-history-limit '2000'
 
-# Core plugins
+# Catppuccin options (must be set BEFORE loading the plugin)
+set -g @catppuccin_flavor 'mocha'
+set -g @catppuccin_window_status_style 'basic'
+set -g @catppuccin_window_text " #W"
+set -g @catppuccin_window_current_text " #W#{?window_zoomed_flag,(),}"
+set -g @catppuccin_window_number_position "right"
+set -g @catppuccin_status_left_separator ""
+set -g @catppuccin_status_right_separator " "
+set -g @catppuccin_status_connect_separator "yes"
+set -g @catppuccin_date_time_text " %m-%d-%Y %H:%M"
+
+# Load catppuccin
+run '~/.config/tmux/plugins/tmux/catppuccin.tmux'
+
+# Status line (must be set AFTER catppuccin loads so module variables exist)
+set -g status-left-length 100
+set -g status-right-length 100
+set -g status-left "#{E:@catppuccin_status_session}"
+set -ag status-left "#{E:@catppuccin_status_application}"
+set -g status-right "#{E:@catppuccin_status_directory}"
+set -agF status-right "#{E:@catppuccin_status_cpu}"
+set -ag status-right "#{E:@catppuccin_status_date_time}"
+
+# Other plugins (loaded via TPM after status line is configured)
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
@@ -27,33 +48,11 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'fcsonline/tmux-thumbs'
 # set -g @plugin 'sainnhe/tmux-fzf'
-set -g @plugin 'catppuccin/tmux'
+set -g @plugin 'tmux-plugins/tmux-cpu'
 
 set -g @continuum-restore 'on'
 set -g @continuum-boot-options 'iterm'
 set -g @resurrect-strategy-nvim 'session'
-set -g @catppuccin_flavour 'mocha'
-
-set -g @catppuccin_window_text " #W"
-set -g @catppuccin_window_current_text " #W"
-
-set -g @catppuccin_window_left_separator "█"
-set -g @catppuccin_window_right_separator "█ "
-set -g @catppuccin_window_number_position "right"
-set -g @catppuccin_window_middle_separator "  █"
-
-set -g @catppuccin_status_left_separator ""
-set -g @catppuccin_status_right_separator " "
-set -g @catppuccin_status_connect_separator "yes"
-
-set -g @catppuccin_window_default_fill "number"
-set -g @catppuccin_window_current_fill "number"
-set -g @catppuccin_window_current_text "#W#{?window_zoomed_flag,(),}"
-set -g @catppuccin_status_fill "all"
-
-set -g @catppuccin_status_modules_left "session application"
-set -g @catppuccin_status_modules_right "directory cpu date_time"
-set -g @catppuccin_date_time_text "%m-%d-%Y %H:%M"
 
 run '~/.tmux/plugins/tpm/tpm'
 
