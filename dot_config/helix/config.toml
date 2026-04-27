@@ -5,6 +5,10 @@ line-number = "relative"
 cursorline = true
 color-modes = true
 
+[editor.soft-wrap]
+enable = true
+wrap-indicator = ""
+
 [editor.cursor-shape]
 insert = "underline"
 normal = "underline"
