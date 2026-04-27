@@ -4,4 +4,4 @@ background-blur = macos-glass-clear
 notify-on-command-finish = unfocused
 macos-window-buttons = hidden
 quick-terminal-position = bottom
-keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = global:opt+grave_accent=toggle_quick_terminal
