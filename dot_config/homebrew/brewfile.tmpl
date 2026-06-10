@@ -1,6 +1,10 @@
-tap "hashicorp/tap"
-tap "docker/tap"
-tap "kcl-lang/tap"
+tap "hashicorp/tap", trusted: true
+tap "docker/tap", trusted: true
+tap "kcl-lang/tap", trusted: true
+{{- if and .machine (index .machine "personal") }}
+tap "siderolabs/tap", trusted: true
+tap "fluxcd/tap", trusted: true
+{{- end }}
 
 brew "ansible"
 brew "ansible-lint"
@@ -46,13 +50,14 @@ brew "kopia"
 brew "krew"
 brew "kubernetes-cli"
 brew "kustomize"
-brew "llama.cpp"
 brew "lefthook"
 brew "minikube"
 brew "minio-mc"
 brew "mtr"
+brew "mlx-lm"
 brew "nmap"
 brew "opencode"
+brew "pi-coding-agent"
 brew "poetry"
 brew "postgresql"
 brew "ripgrep"
@@ -80,9 +85,6 @@ cask "visual-studio-code"
 cask "zoom"
 
 {{- if and .machine (index .machine "personal") }}
-tap "siderolabs/tap"
-tap "fluxcd/tap"
-
 brew "act"
 brew "ente-cli"
 brew "fluxcd/tap/flux"
