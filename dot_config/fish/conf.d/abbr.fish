@@ -30,3 +30,8 @@ abbr ips 'ifconfig -a | grep -o "inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0
 abbr cleanup 'find . -type f -name "*.DS_Store" -ls -delete'
 abbr emptytrash 'sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* "delete from LSQuarantineEvent"'
 abbr flushdns 'dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
+
+# AI Agents
+abbr ocomo 'sbx run ocomo --kit ~/code/docker-sbx/opencode'
+abbr pi 'sbx run pi-agent --kit ~/code/docker-sbx/pi-agent'
+abbr claude 'sbx run claude --kit ~/code/docker-sbx/claude'
