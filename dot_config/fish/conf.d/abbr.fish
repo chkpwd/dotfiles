@@ -34,4 +34,4 @@ abbr flushdns 'dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 # AI Agents
 abbr ocomo 'sbx run ocomo --kit ~/code/docker-sbx/opencode'
 abbr pi 'sbx run pi-agent --kit ~/code/docker-sbx/pi-agent'
-abbr claude 'sbx run claude --kit ~/code/docker-sbx/claude'
+abbr clode 'sbx run clode --kit ~/code/docker-sbx/claude'
